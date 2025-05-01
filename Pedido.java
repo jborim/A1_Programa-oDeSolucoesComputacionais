@@ -2,88 +2,86 @@ package Pizzaria;
 import javax.swing.JOptionPane;
 
 public class Pedido {
-	private String sabor;
-	private String tamanho;
-	private int quantidade;
-	private int fatias;
-	private double valor;
-	private String bebida;
 	
+	//private int idCliente;
+	private String tamanho;
+	private String sabor;
+	private String bebida;
+	private double preco;
 	public String getTamanho() {
 		return tamanho;
 	}
-
-	public void setTamanho(String tamanho) {
-		this.tamanho = tamanho;
+	public void setTamanho(String tam) {
+		switch (tam) {
+		case "1": 
+			this.tamanho = "pequena";
+			break;
+		case "2":
+			this.tamanho = "media";
+			break;
+		case "3":
+			this.tamanho = "grande";
+			break;
+		default:
+			JOptionPane.showMessageDialog(null, "Opção inválida!");
+			break;
+		
+		}
 	}
-
 	public String getSabor() {
 		return sabor;
 	}
-
 	public void setSabor(String sabor) {
-		this.sabor = sabor;
+		switch(sabor){
+		case "1": 
+			this.sabor = "Calabresa";
+			break;
+		case "2":
+			this.sabor = "Quatro queijos";
+			break;
+		case "3":
+			this.sabor = "Brigadeiro";
+			break;
+		case "4":
+			this.sabor = "Prestigio";
+			break;
+		default:
+			JOptionPane.showMessageDialog(null, "Opção inválida!");
+			break;
+		}
 	}
-
-	public int getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
-
-	public int getFatias() {
-		return fatias;
-	}
-
-	public void setFatias(int fatias) {
-		this.fatias = fatias;
-	}
-
-	public double getValor() {
-		return valor;
-	}
-
-	public void setValor(double valor) {
-		this.valor = valor;
-	}
-
 	public String getBebida() {
 		return bebida;
 	}
-
 	public void setBebida(String bebida) {
+			
 		this.bebida = bebida;
 	}
-
-	public void TamanhoPizza(String tamanho) {
-		if(tamanho == "1") {
-			this.tamanho = tamanho;
-		}if(tamanho == "2"){
-			this.tamanho = tamanho;
-			
-		}if(tamanho == "3") {
-			this.tamanho = tamanho;
-			
-		}else {
-			JOptionPane.showMessageDialog(null,"Escolha um dos tamanhos apresentados na tela!");
-		}
+	public double getPreco() {
+		return preco;
 	}
+	public void setPreco(double preco) {		
+		this.preco = preco;
+	}	
 	
-	public void SaboresPequena(String sabor) {
-		
-		this.sabor = JOptionPane.showInputDialog("Escolha o sabor da pizza.\n1 Quatro queijos\n2 Calabresa\n3 Chocolate\n4 Mesclada");
-		
-			
-	}
-	
-	public void SaboresMédia() {
+	public void adicionaPizza() {
 		
 	}
 	
-	public void SaboresGrande() {
-		
-	}
+			public void adicionaBebida(String bebida) {
+				switch (bebida) {
+				case "1" :
+					setBebida("cocaCola");
+					break;
+				case "2" :
+					setBebida("guarana");
+					break;
+				default:
+					JOptionPane.showMessageDialog(null, "Opção inválida!");
+					break;
+					}			
+				}
+			
+			
 
 }
