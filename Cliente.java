@@ -1,13 +1,19 @@
 package Pizzaria;
 import javax.swing.JOptionPane;
 
+
+
+
+
 public class Cliente {
 
 	private String nome;
 	private String endereco;
 	private String contato;
-	private int idCliente;
-	private int senha;
+	
+	public Cliente(String nome2, String contato2) {
+		// TODO Auto-generated constructor stub
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -22,20 +28,7 @@ public class Cliente {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	public int getIdCliente() {
-		return idCliente;
-	}
-	
-	public int getSenha() {
-		return senha;
-	}
-	public void setSenha(int senha) {
-		this.senha = senha;
-	}
-	public void setIdCliente(int idCliente) {
-		this.idCliente = idCliente;
-	}
-		
+
 	public String getContato() {
 		return contato;
 	}
@@ -47,7 +40,7 @@ public class Cliente {
             JOptionPane.showMessageDialog(null,"Numero inválido!");
         }
 	}
-	
+	/*
 	public void adicionandocontato(String contato) {
 		
 	        if (contato.matches("\\d{10,11}")) { // Validação básica para números de telefone
@@ -58,8 +51,8 @@ public class Cliente {
 		
 	}
 	
-	public void cadastroValido(String nome, int senha) {
-		if(nome ==this.nome || senha == this.senha ){
+	public void cadastroValido(String nome) {
+		if(nome ==this.nome  ){
 			JOptionPane.showMessageDialog(null,"bem vindo !" + nome);
 		}else {
 			JOptionPane.showMessageDialog(null,"Nome ou senha inválidos!");
@@ -76,6 +69,22 @@ public class Cliente {
 			JOptionPane.showMessageDialog(null,"Nome ou senha inválidos!");
 		}
 	}
-	
+	*/
+	 
+	public void exibirInformacoes() {
+        JOptionPane.showMessageDialog(null, "Nome: " + nome + "\nContato: " + contato);
+    }
+
+    // Método para cadastrar cliente usando JOptionPane
+    public static Cliente cadastrarCliente() {
+        String nome = JOptionPane.showInputDialog("Digite o nome do cliente:");
+        String contato = JOptionPane.showInputDialog("Digite o contato do cliente:");
+
+        return new Cliente(nome,contato);
+    }
+
+
 	
 }
+
+
