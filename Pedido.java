@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 public class Pedido {
 	private String tamanho;
 	private String sabor;
+	private String[] saborFatias = new String[3];
 	private String bebida;
 	private double preco;
 	private double precobeb;
@@ -12,18 +13,18 @@ public class Pedido {
 	public String getTamanho() {
 		return tamanho;
 	}
-	public void setTamanho(String tam) {
+	public void setTamanho(int tam) {
 		switch (tam) {
-		case "1": 
+		case 1: 
 			
 			this.tamanho = "pequena";
 			this.preco = 39.90;
 			break;
-		case "2":
+		case 2:
 			this.tamanho = "media";
 			this.preco = 59.90;
 			break;
-		case "3":
+		case 3:
 			this.tamanho = "grande";
 			this.preco = 69.90;
 			break;
@@ -34,29 +35,35 @@ public class Pedido {
 		}
 	}
 	
-	public String getSabor() {
+	public String getSaborFatias() {
 		return sabor;
 	}
-	public void setSabor(String sabor) {
+	public void setSaborFatias(int tam) {
+		for(int i = 0; i < tam; i++) {
+		sabor = JOptionPane.showInputDialog("1 - Calabresa\n2 - Quatro queijos\n3 - Brigadeiro\n4 - prestigio");
 		switch(sabor){
 		case "1": 
-			this.sabor = "Calabresa";
+			this.saborFatias[i] = "Calabresa";
 			break;
 		case "2":
-			this.sabor = "Quatro queijos";
+			this.saborFatias[i] = "Quatro queijos";
 			break;
 		case "3":
-			this.sabor = "Brigadeiro";
+			this.saborFatias[i] = "Brigadeiro";
 			break;
 		case "4":
-			this.sabor = "Prestigio";
+			this.saborFatias[i] = "Prestigio";
 			break;
 		default:
 			JOptionPane.showMessageDialog(null, "Opção inválida!");
 			break;
 		}
+		}
 	}
 	
+	public double getPreco() {
+		return preco;
+	}
 	public void adicionaBebida(String bebida) {
 		switch (bebida) {
 		case "1" :
@@ -93,16 +100,43 @@ public class Pedido {
 	
 	public void Recibo() {
 		double subtotal;
-		JOptionPane.showMessageDialog(null, "Pizza escolhida :\nTamanho: " + tamanho + "\n sabor: " + sabor + "\nR$ " + preco);
-		if(bebida == "cocaCola" || bebida == "guarana") {
-			JOptionPane.showMessageDialog(null, "Bebida escolhida : " + bebida + "\nR$ " + precobeb  );
-			 subtotal = preco + precobeb;
-			 JOptionPane.showMessageDialog(null, "SubTotal:  " + subtotal);
-		}
-		 subtotal = preco;
-		JOptionPane.showMessageDialog(null, "SubTotal:  " + subtotal);
-	}
-
+		if(tamanho != null && bebida != null) {
 			
-
+			JOptionPane.showMessageDialog(null, "Pizza escolhida :\nTamanho: " + tamanho  );
+			
+				for(int i = 0; i < 2 -1 ; i++) {
+				JOptionPane.showMessageDialog(null,"\n sabor: " + saborFatias[i]);
+				}
+				
+			JOptionPane.showMessageDialog(null, "Bebida escolhida : " + bebida + "\nR$ " + precobeb  );
+			subtotal = preco + precobeb;
+			JOptionPane.showMessageDialog(null, "SubTotal:  " + subtotal);
+			
+		} else if(tamanho != null ) {
+			
+			JOptionPane.showMessageDialog(null, "Pizza escolhida :\nTamanho: " + tamanho  );
+			
+				for(int i = 0; i < 3; i++) {
+				JOptionPane.showMessageDialog(null,"\n sabor: " + saborFatias[i]);
+				}
+				
+			}else if(bebida != null) {
+				
+			
+				JOptionPane.showMessageDialog(null, "Bebida escolhida : " + bebida + "\nR$ " + precobeb  );
+				subtotal = preco + precobeb;
+				JOptionPane.showMessageDialog(null, "SubTotal:  " + subtotal);
+					//JOptionPane.showMessageDialog(null,"\nR$ " + preco);
+		
+			}else {
+				JOptionPane.showMessageDialog(null, "nenhum pedido feito!!  ");
+			}
+	}
 }
+		
+	
+	
+	
+	
+	
+
